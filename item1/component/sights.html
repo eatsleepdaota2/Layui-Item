@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>轮播</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+  
+</head>
+<body>
+	<div class="layui-tab">
+		<ul class="layui-tab-title">
+			<li class="layui-this">老校区</li>
+			<li>新校区</li>
+			<li>123</li>
+		</ul>
+		<div class="layui-tab-content " style="width: 808px;">
+			<div class="layui-tab-item layui-show ">
+				<div class="layui-card">
+				  <div class="layui-card-body">
+					<div class="layui-carousel" id="test-carousel-img1">
+					  <div carousel-item="">
+						<div><img src="../picture/picture1.jpg" style="width: 778px; height: 440px;"></div>
+						<div><img src="../picture/picture2.jpg" style="width: 778px; height: 440px;"></div>	
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="layui-tab-item">
+				<div class="layui-card">
+				  <div class="layui-card-body">
+					<div class="layui-carousel" id="test-carousel-img2">
+					  <div carousel-item="">
+						<div><img src="../picture/picture4.jpg" style="width: 778px; height: 440px;"></div>
+						<div><img src="../picture/picture5.jpg" style="width: 778px; height: 440px;"></div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="layui-tab-item">
+				<div class="layui-card">
+				  <div class="layui-card-body">
+					<div class="layui-carousel" id="test-carousel-img3">
+					  <div carousel-item="">
+						<div><img src="../picture/picture3.jpg" style="width: 778px; height: 440px;"></div>
+						<div><img src="../picture/picture6.jpg" style="width: 778px; height: 440px;"></div>	
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	 
+	
+			  
+			  
+	
+	
+  <script src="../../layuiadmin/layui/layui.js"></script>  
+<script>
+	layui.config({
+		base: '../../layuiadmin/' //静态资源所在路径
+	}).extend({
+		index: 'lib/index' //主入口模块
+	}).use(['index', 'carousel', 'form','element'], function(){
+		var carousel = layui.carousel
+		,form = layui.form;
+		element = layui.element;
+		
+		
+		//常规轮播
+		carousel.render({
+			elem: '#test-carousel-normal',
+			arrow: 'always'
+		});
+
+		//改变下时间间隔、动画类型、高度
+		carousel.render({
+		elem: '#test-carousel-normal-2',
+		interval: 1800,
+		anim: 'fade',
+		height: '120px'
+		});
+
+		//设定各种参数
+		var ins3 = carousel.render({
+		elem: '#test-carousel-demo'
+		});
+		//图片轮播
+		carousel.render({
+			elem: '#test-carousel-img1'
+			,width: '778px'
+			,height: '440px'
+			,interval: 5000
+		});
+		carousel.render({
+			elem: '#test-carousel-img2'
+			,width: '778px'
+			,height: '440px'
+			,interval: 5000
+		});
+		carousel.render({
+			elem: '#test-carousel-img3'
+			,width: '778px'
+			,height: '440px'
+			,interval: 5000
+		});
+
+		//事件
+		carousel.on('change(test-carousel-demo)', function(res){
+		console.log(res)
+		});
+
+		var $ = layui.$, active = {
+		set: function(othis){
+		var THIS = 'layui-bg-normal'
+		,key = othis.data('key')
+		,options = {};
+
+		othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+		options[key] = othis.data('value');
+		ins3.reload(options);
+		}
+		};
+
+		//监听开关
+		form.on('switch(test-carousel-autoplay)', function(){
+		ins3.reload({
+		autoplay: this.checked
+		});
+		});
+
+		$('.test-carousel-demoSet').on('keyup', function(){
+		var value = this.value
+		,options = {};
+		if(!/^\d+$/.test(value)) return;
+
+		options[this.name] = value;
+		ins3.reload(options);
+		});
+
+		//其它示例
+		$('.test-carousel-demoTest .layui-btn').on('click', function(){
+		var othis = $(this), type = othis.data('type');
+		active[type] ? active[type].call(this, othis) : '';
+		});
+
+		//一些事件监听
+		element.on('tab(demo)', function(data){
+		console.log(data);
+		});
+
+	});
+</script>
+</body>
+</html>

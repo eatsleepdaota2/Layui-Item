@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>时间线</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+  <style>
+  /* 这段样式只是用于演示 */
+  #LAY-component-timeline .layui-card-body{padding: 15px;}
+  </style>
+
+  <div class="layui-fluid" id="LAY-component-timeline">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <div class="layui-card-header">师大历史</div>
+          <div class="layui-card-body">
+
+            <ul class="layui-timeline">
+              <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">12月28日</h3>
+                  <p>
+						青海师范大学建于1956年
+                  </p>
+                  <p><br>校已形成具有本科教育、研究生教育、留学生教育、成人教育和职业教育的完备教育体系，学科专业覆盖哲学、经济学、法学、教育学、文学、历史学、理学、工学、管理学、艺术学等10大门类。</p>
+                </div>
+              </li>
+              <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">12月25日</h3>
+                  <p>又是一年 <em>“圣诞节”</em>，2018 向我们正在走来</p>
+                  <ul>
+                    <li>叮叮当，叮叮当，铃儿响叮当</li>
+                    <li>今晚滑雪多快乐，我们坐在雪橇上</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                  <h3 class="layui-timeline-title">12月24日</h3>
+                  <p>
+                    美丽的夜晚，都是祈祷的人们。<br>他们等待着第二天，收到圣诞老人的礼物。<br><br>
+                  </p>
+                  <blockquote class="layui-elem-quote">平安夜，天赐平安。愿真善美的事物都能永恒。</blockquote>
+                </div>
+              </li>
+              <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis"></i>
+                <div class="layui-timeline-content layui-text">
+                  <div class="layui-timeline-title">过去</div>
+                </div>
+              </li>
+            </ul> 
+          
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="../../layuiadmin/layui/layui.js"></script>  
+  <script>
+  layui.config({
+    base: '../../../layuiadmin/' //静态资源所在路径
+  }).extend({
+    index: 'lib/index' //主入口模块
+  }).use(['index']);
+  </script>
+</body>
+</html>
